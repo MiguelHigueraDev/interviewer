@@ -1,7 +1,7 @@
 import { Settings } from "@/components/home/settings";
 import { DifficultySelector } from "@/components/home/interview-config/interview-config";
 import { TechnologySelector } from "@/components/home/technology-selector/technology-selector";
-import { Button } from "@/components/ui/button";
+import { GenerateQuestionsBtn } from "@/components/home/generate-questions-btn";
 
 export default function Home() {
   return (
@@ -16,9 +16,7 @@ export default function Home() {
             <TechnologySelector />
             <DifficultySelector />
           </div>
-          <Button className="w-full md:w-auto cursor-pointer">
-            Generate Questions
-          </Button>
+          <GenerateQuestionsBtn />
         </main>
       </div>
       <div className="fixed bottom-3 right-3 p-2">
