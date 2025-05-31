@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useInterviewStore } from "@/stores/interview";
 import { HomeRedirector } from "@/components/home/home-redirector";
 import { MultipleChoiceQuestion } from "./multiple-choice-question";
+import { Results } from "./results";
 
 export default function MultipleChoiceInterview() {
   const { questions, currentQuestionIndex, advanceToNextQuestion } =
@@ -39,11 +40,11 @@ export default function MultipleChoiceInterview() {
           onSelectionChange={handleSelectionChange}
           onNext={handleNext}
           hasUnansweredQuestions={areThereUnansweredQuestions}
+          currentQuestionIndex={currentQuestionIndex}
+          questions={questions}
         />
       ) : (
-        <div className="text-center text-lg font-medium text-muted-foreground mt-12">
-          No more questions
-        </div>
+        <Results />
       )}
     </div>
   );

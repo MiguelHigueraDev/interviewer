@@ -10,6 +10,8 @@ interface MultipleChoiceQuestionProps {
   onSelectionChange: (choiceIndex: number) => void;
   onNext: () => void;
   hasUnansweredQuestions: boolean;
+  currentQuestionIndex: number;
+  questions: Question[];
 }
 
 export function MultipleChoiceQuestion({
@@ -18,9 +20,16 @@ export function MultipleChoiceQuestion({
   onSelectionChange,
   onNext,
   hasUnansweredQuestions,
+  currentQuestionIndex,
+  questions,
 }: MultipleChoiceQuestionProps) {
   return (
     <div className="w-full max-w-md bg-gray-50 p-8 rounded-2xl shadow-lg flex flex-col items-center">
+      <div className="flex justify-center items-center w-full mb-4">
+        <div className="text-sm text-gray-500 tracking-widest">
+          {currentQuestionIndex + 1} / {questions.length}
+        </div>
+      </div>
       <div className="mb-6 w-full text-center text-xl font-semibold">
         {question.question}
       </div>
