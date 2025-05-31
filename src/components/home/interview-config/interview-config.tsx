@@ -22,7 +22,7 @@ export function DifficultySelector() {
       <CardHeader>
         <CardTitle>Interview Configuration</CardTitle>
         <CardDescription>
-          Adjust the difficulty and view the interview type.
+          Adjust the difficulty and interview type.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">

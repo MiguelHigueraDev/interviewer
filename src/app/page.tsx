@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <h1 className="text-4xl font-bold">Interviewer</h1>
       <h2 className="text-lg text-muted-foreground mb-4 md:mb-8">
-        Get interview questions about the technology you are applying for
+        Prepare for that interview!
       </h2>
       <div className="flex flex-col space-y-4 mb-4 md:space-y-0 md:flex-row gap-4 w-full">
         <TechnologySelector />
