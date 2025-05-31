@@ -22,6 +22,7 @@ export const choiceSchema = z.object({
 export const questionSchema = z.object({
   question: z.string(),
   choices: z.array(choiceSchema).length(4),
+  isCorrect: z.boolean().optional().nullable(),
 });
 
 export const questionsSchema = z.object({
