@@ -18,8 +18,9 @@ export const generateQuestions = async () => {
     const google = getGoogleGenAIClient();
     const response = await generateObject({
       model: google("gemini-2.0-flash"),
-      system:
-        "You are a helpful assistant that generates interview questions for a given technology and difficulty level. Each question should have a 'text' field and a 'choices' array of 4 objects, each with 'text' and 'isCorrect' (boolean, only one isCorrect should be true per question).",
+      system: `You are a helpful assistant that generates interview questions for a given technology and difficulty level. 
+        Each question should have a 'text' field and a 'choices' array of 4 objects, each with 'text' and 'isCorrect' (boolean, only one isCorrect should be true per question).
+        Try to make the questions as diverse as possible.`,
       prompt: `Generate 10 ${getDifficultyName(
         difficulty
       )} interview questions about the ${selectedTechnology.name}`,
