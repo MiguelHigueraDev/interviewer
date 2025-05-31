@@ -3,7 +3,7 @@
 import { useInterviewStore } from "@/stores/interview";
 import { Button } from "../ui/button";
 import { getDifficultyName } from "@/lib/utils";
-import { generateQuestions } from "@/lib/ai";
+import { generateMultipleChoiceQuestions } from "@/lib/ai";
 import { Loader2Icon } from "lucide-react";
 
 export function GenerateQuestionsBtn() {
@@ -20,7 +20,10 @@ export function GenerateQuestionsBtn() {
   }
 
   return (
-    <Button onClick={generateQuestions} className="w-full p-6 cursor-pointer">
+    <Button
+      onClick={generateMultipleChoiceQuestions}
+      className="w-full p-6 cursor-pointer"
+    >
       Generate {getDifficultyName(difficulty)} {selectedTechnology.name}{" "}
       Interview Questions
     </Button>

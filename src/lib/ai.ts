@@ -5,7 +5,7 @@ import { getDifficultyName } from "./utils";
 import { useInterviewStore } from "@/stores/interview";
 import { questionsSchema } from "./types";
 
-export const generateQuestions = async () => {
+export const generateMultipleChoiceQuestions = async () => {
   const {
     difficulty,
     selectedTechnology,
