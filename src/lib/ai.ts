@@ -19,7 +19,8 @@ export const generateLiveCodingInterview =
       )} problem with ${TEST_CASES_COUNT} test cases for a ${getDurationLabel(
         duration
       )} live coding interview. Include the initial code for both TypeScript and JavaScript
-      , which also logs the test cases to the console.`,
+      , which also logs the test cases to the console.
+      The initial code should be just boilerplate with a function, not the full solution.`,
       schema: liveCodingInterviewSchema,
       temperature: 1.7,
       maxRetries: 3,
