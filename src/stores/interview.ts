@@ -13,6 +13,8 @@ export type InterviewStore = {
   testCases: TestCase[];
   testResults: { passed: boolean; output: string }[];
   isLoading: boolean;
+  interviewStartTime: number | null;
+  isInterviewActive: boolean;
 
   setDifficulty: (difficulty: InterviewDifficulty) => void;
   setDuration: (duration: Duration) => void;
@@ -20,6 +22,8 @@ export type InterviewStore = {
   setLanguage: (language: "typescript" | "javascript") => void;
   setCurrentCode: (code: string) => void;
   setIsLoading: (isLoading: boolean) => void;
+  setInterviewStartTime: (startTime: number | null) => void;
+  setIsInterviewActive: (isActive: boolean) => void;
   resetInterview: () => void;
   submitLiveCodingAnswer: () => void;
   generateInterview: () => Promise<void>;
@@ -36,6 +40,8 @@ export const useInterviewStore = create<InterviewStore>((set) => ({
   testCases: [],
   testResults: [],
   isLoading: false,
+  interviewStartTime: null,
+  isInterviewActive: false,
 
   setDifficulty: (difficulty) => set({ difficulty }),
   setDuration: (duration) => set({ duration }),
@@ -54,6 +60,8 @@ export const useInterviewStore = create<InterviewStore>((set) => ({
         : { javaScriptCode: code }),
     })),
   setIsLoading: (isLoading) => set({ isLoading }),
+  setInterviewStartTime: (startTime) => set({ interviewStartTime: startTime }),
+  setIsInterviewActive: (isActive) => set({ isInterviewActive: isActive }),
   resetInterview: () =>
     set({
       question: "",
@@ -61,10 +69,13 @@ export const useInterviewStore = create<InterviewStore>((set) => ({
       typeScriptCode: "",
       javaScriptCode: "",
       testResults: [],
+      interviewStartTime: null,
+      isInterviewActive: false,
     }),
   submitLiveCodingAnswer: () => {
     set({
       testResults: [],
+      isInterviewActive: false,
     });
   },
 
@@ -83,6 +94,8 @@ export const useInterviewStore = create<InterviewStore>((set) => ({
         testResults: [],
         testCases: interview.testCases,
         isLoading: false,
+        interviewStartTime: Date.now(),
+        isInterviewActive: true,
       }));
     } catch (error) {
       console.error("Failed to generate interview:", error);

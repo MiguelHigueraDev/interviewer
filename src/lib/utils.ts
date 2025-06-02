@@ -40,3 +40,23 @@ export const isApiKeyValid = (apiKey: string) => {
 export const transpileTs = (tsCode: string) => {
   return transform(tsCode, { transforms: ["typescript"] }).code;
 };
+
+export const getDurationInMs = (value: Duration) => {
+  switch (value) {
+    case Duration.MINUTES_10:
+      return 10 * 60 * 1000;
+    case Duration.MINUTES_20:
+      return 20 * 60 * 1000;
+    case Duration.MINUTES_30:
+      return 30 * 60 * 1000;
+  }
+};
+
+export const formatTime = (milliseconds: number) => {
+  const totalSeconds = Math.floor(milliseconds / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes.toString().padStart(2, "0")}:${seconds
+    .toString()
+    .padStart(2, "0")}`;
+};
