@@ -5,6 +5,7 @@ import { ConsoleMessage } from "@/components/live-coding-interview/editor-consol
 import EditorSidebar from "@/components/live-coding-interview/editor-sidebar";
 import { useState, useEffect, useRef } from "react";
 import { useInterviewStore } from "@/stores/interview";
+import { transpileTs } from "@/lib/utils";
 
 interface EditorProps {
   onSubmit?: () => void;
@@ -94,7 +95,8 @@ export default function Editor({ onSubmit }: EditorProps) {
       };
 
       try {
-        const func = new Function(typeScriptCode);
+        const jsCode = transpileTs(typeScriptCode);
+        const func = new Function(jsCode);
         func();
       } catch (error) {
         messages.push({

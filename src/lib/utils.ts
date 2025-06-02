@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Duration, InterviewDifficulty } from "./types";
+import { transform } from "sucrase";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -34,4 +35,8 @@ export const getDurationLabel = (value: Duration) => {
 
 export const isApiKeyValid = (apiKey: string) => {
   return apiKey.startsWith("AIza");
+};
+
+export const transpileTs = (tsCode: string) => {
+  return transform(tsCode, { transforms: ["typescript"] }).code;
 };
