@@ -27,3 +27,4 @@ export const liveCodingInterviewSchema = z.object({
 });
 
 export type LiveCodingInterview = z.infer<typeof liveCodingInterviewSchema>;
+export type TestCase = z.infer<typeof testCaseSchema>;
