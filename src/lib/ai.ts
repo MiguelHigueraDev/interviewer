@@ -1,11 +1,7 @@
-import { generateObject } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import useApiKeyStore from "@/stores/api-key";
-import { getDifficultyName } from "./utils";
-import { useInterviewStore } from "@/stores/interview";
-import { questionsSchema } from "./types";
 
-export const generateMultipleChoiceQuestions = async () => {
+/*export const generateMultipleChoiceQuestions = async () => {
   const {
     difficulty,
     selectedTechnology,
@@ -38,7 +34,7 @@ export const generateMultipleChoiceQuestions = async () => {
   } finally {
     setIsGeneratingQuestions(false);
   }
-};
+};*/
 
 const getGoogleGenAIClient = () => {
   const { apiKey } = useApiKeyStore.getState();
