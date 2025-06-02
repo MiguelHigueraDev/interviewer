@@ -7,11 +7,7 @@ import { useState, useEffect, useRef } from "react";
 import { useInterviewStore } from "@/stores/interview";
 import { transpileTs } from "@/lib/utils";
 
-interface EditorProps {
-  onSubmit?: () => void;
-}
-
-export default function Editor({ onSubmit }: EditorProps) {
+export default function Editor() {
   const { typeScriptCode, setCurrentCode } = useInterviewStore();
   const [consoleOutput, setConsoleOutput] = useState<ConsoleMessage[]>([]);
   const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -147,7 +143,7 @@ export default function Editor({ onSubmit }: EditorProps) {
           onChange={(value) => setCurrentCode(value ?? "")}
         />
       </div>
-      <EditorSidebar consoleOutput={consoleOutput} onSubmit={onSubmit} />
+      <EditorSidebar consoleOutput={consoleOutput} />
     </div>
   );
 }

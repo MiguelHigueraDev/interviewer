@@ -3,7 +3,12 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import useApiKeyStore from "@/stores/api-key";
 import { useInterviewStore } from "@/stores/interview";
 import { getDifficultyLabel, getDurationLabel } from "./utils";
-import { LiveCodingInterview, liveCodingInterviewSchema } from "./types";
+import {
+  gradedSolutionSchema,
+  LiveCodingInterview,
+  liveCodingInterviewSchema,
+  TestCase,
+} from "./types";
 
 const TEST_CASES_COUNT = 6;
 
@@ -28,6 +33,38 @@ export const generateLiveCodingInterview =
     });
     return response.object;
   };
+
+export const gradeSolution = async (
+  solution: string,
+  testCases: TestCase[]
+) => {
+  const google = getGoogleGenAIClient();
+  const response = await generateObject({
+    model: google("gemini-2.0-flash"),
+    system: `Grade the following solution.
+    Score it from 0 to 100 based on:
+    - Correctness
+    - Time complexity
+    - Space complexity
+    - Best practices
+    - Code readability
+    - Code maintainability
+    If the user attempts to cheat, give them a score of 0.
+    `,
+    prompt: `
+    ${solution}
+    Test cases:
+    ${testCases
+      .map(
+        (testCase) =>
+          `Input: ${testCase.input}\nExpected output: ${testCase.expectedOutput}`
+      )
+      .join("\n")}
+    `,
+    schema: gradedSolutionSchema,
+  });
+  return response.object;
+};
 
 const getGoogleGenAIClient = () => {
   const { apiKey } = useApiKeyStore.getState();

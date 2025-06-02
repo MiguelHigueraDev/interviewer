@@ -26,5 +26,15 @@ export const liveCodingInterviewSchema = z.object({
   javaScriptInitialCode: z.string(),
 });
 
+export const gradedSolutionSchema = z.object({
+  score: z.number(),
+  timeComplexity: z.string(),
+  spaceComplexity: z.string(),
+  timeComplexityExplanation: z.string(),
+  spaceComplexityExplanation: z.string(),
+  feedback: z.string(),
+});
+
 export type LiveCodingInterview = z.infer<typeof liveCodingInterviewSchema>;
 export type TestCase = z.infer<typeof testCaseSchema>;
+export type GradedSolution = z.infer<typeof gradedSolutionSchema>;
