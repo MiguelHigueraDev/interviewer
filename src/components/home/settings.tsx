@@ -62,7 +62,7 @@ export function Settings() {
         <DialogHeader>
           <DialogTitle>Settings</DialogTitle>
           <DialogDescription>
-            Enter your Gemini API key below. You can find your API key in{" "}
+            Enter your Gemini API key below. You can get your API key in{" "}
             <a
               href="https://aistudio.google.com/"
               target="_blank"
@@ -71,7 +71,10 @@ export function Settings() {
             >
               Google AI Studio
             </a>
-            .
+            .{" "}
+            <strong>
+              Your API key is only used locally and never sent to our servers.
+            </strong>
           </DialogDescription>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
