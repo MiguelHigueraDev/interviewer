@@ -22,7 +22,9 @@ export default function EditorSidebar({
       <div className="flex flex-col gap-4 flex-shrink-0">
         <div>
           <h2 className="text-lg font-semibold mb-2">Question</h2>
-          <ReactMarkdown>{question}</ReactMarkdown>
+          <div className="prose">
+            <ReactMarkdown>{question}</ReactMarkdown>
+          </div>
         </div>
         <div>
           <h2 className="text-lg font-semibold mb-2">Test Cases</h2>
