@@ -20,7 +20,8 @@ export const generateLiveCodingInterview =
         duration
       )} live coding interview. Include the initial code for both TypeScript and JavaScript
       , which also logs the test cases to the console.
-      The initial code should be just boilerplate with a function, not the full solution.`,
+      The initial code should be just boilerplate with a function, not the full solution.
+      Don't provide test cases in the question, only the problem statement. Include them separately.`,
       schema: liveCodingInterviewSchema,
       temperature: 1.7,
       maxRetries: 3,
