@@ -72,7 +72,6 @@ export const useInterviewStore = create<InterviewStore>((set) => ({
     set({ isLoading: true });
     try {
       const interview = await generateLiveCodingInterview();
-      console.log(interview);
       set((state) => ({
         question: interview.problem,
         typeScriptCode: interview.typeScriptInitialCode,

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   EditorConsole,
   ConsoleMessage,
@@ -6,16 +5,13 @@ import {
 import { useInterviewStore } from "@/stores/interview";
 import ReactMarkdown from "react-markdown";
 import { ArrowRight, Play } from "lucide-react";
+import { GradeButton } from "./grade-button";
 
 interface EditorSidebarProps {
   consoleOutput: ConsoleMessage[];
-  onSubmit?: () => void;
 }
 
-export default function EditorSidebar({
-  consoleOutput,
-  onSubmit,
-}: EditorSidebarProps) {
+export default function EditorSidebar({ consoleOutput }: EditorSidebarProps) {
   const { question, testCases } = useInterviewStore();
   return (
     <div className="flex flex-col gap-4 w-full md:w-2/5 h-full border border-gray-200 rounded-lg p-2">
@@ -50,9 +46,7 @@ export default function EditorSidebar({
       <div className="flex-1 min-h-0">
         <EditorConsole messages={consoleOutput} />
       </div>
-      <Button className="w-full flex-shrink-0" onClick={onSubmit}>
-        Submit and grade
-      </Button>
+      <GradeButton />
     </div>
   );
 }
