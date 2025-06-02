@@ -5,7 +5,7 @@ import { QuestionRedirector } from "@/components/live-coding-interview/question-
 
 export default function Home() {
   return (
-    <div className="h-screen flex flex-col items-center justify-center px-4 py-8">
+    <div className="h-screen flex flex-col items-center justify-center px-4 py-8 max-w-lg mx-auto">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4">Interviewer</h1>
         <h2 className="text-lg text-muted-foreground">

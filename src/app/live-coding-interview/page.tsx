@@ -4,7 +4,7 @@ import { NoQuestionRedirector } from "@/components/live-coding-interview/no-ques
 
 export default function LiveCodingInterviewPage() {
   return (
-    <div className="h-screen flex flex-col overflow-hidden max-w-xl mx-auto">
+    <div className="h-screen flex flex-col overflow-hidden">
       <div className="text-center py-4 px-4 flex-shrink-0">
         <h1 className="text-3xl md:text-4xl font-bold mb-2">Interviewer</h1>
         <h2 className="text-base md:text-lg text-muted-foreground">
