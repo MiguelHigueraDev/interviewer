@@ -6,29 +6,21 @@ export enum InterviewDifficulty {
   HARD,
 }
 
-export type InterviewType = "MULTIPLE_CHOICE";
-
-export interface Technology {
-  name: string;
-  description: string;
-  icon: string;
+export enum Duration {
+  MINUTES_10,
+  MINUTES_20,
+  MINUTES_30,
 }
 
-export const choiceSchema = z.object({
-  choice: z.string(),
-  isCorrect: z.boolean(),
+export const testCaseSchema = z.object({
+  input: z.string(),
+  expectedOutput: z.string(),
 });
 
-export const questionSchema = z.object({
-  question: z.string(),
-  choices: z.array(choiceSchema).length(4),
-  isCorrect: z.boolean().optional().nullable(),
+export const liveCodingInterviewSchema = z.object({
+  problem: z.string(),
+  difficulty: z.nativeEnum(InterviewDifficulty),
+  testCases: z.array(testCaseSchema),
 });
 
-export const questionsSchema = z.object({
-  questions: z.array(questionSchema),
-});
-
-export type Choice = z.infer<typeof choiceSchema>;
-export type Question = z.infer<typeof questionSchema>;
-export type Questions = z.infer<typeof questionsSchema>;
+export type LiveCodingInterview = z.infer<typeof liveCodingInterviewSchema>;
