@@ -28,7 +28,7 @@ export const generateLiveCodingInterview =
       The initial code should be just boilerplate with a function, not the full solution.
       Don't provide test cases in the question, only the problem statement. Include them separately.`,
       schema: liveCodingInterviewSchema,
-      temperature: 1.7,
+      temperature: 2,
       maxRetries: 3,
     });
     return response.object;
