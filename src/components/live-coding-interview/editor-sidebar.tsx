@@ -4,6 +4,8 @@ import {
   ConsoleMessage,
 } from "@/components/live-coding-interview/editor-console";
 import { useInterviewStore } from "@/stores/interview";
+import ReactMarkdown from "react-markdown";
+import { ArrowRight, Play } from "lucide-react";
 
 interface EditorSidebarProps {
   consoleOutput: ConsoleMessage[];
@@ -20,17 +22,25 @@ export default function EditorSidebar({
       <div className="flex flex-col gap-4 flex-shrink-0">
         <div>
           <h2 className="text-lg font-semibold mb-2">Question</h2>
-          <p className="text-sm mb-2">{question}</p>
+          <ReactMarkdown>{question}</ReactMarkdown>
         </div>
         <div>
           <h2 className="text-lg font-semibold mb-2">Test Cases</h2>
-          <div className="flex flex-col gap-1 text-sm text-gray-600">
+          <div className="flex flex-col gap-2 text-sm">
             {testCases.map((testCase) => (
-              <p key={testCase.input}>
-                Input: {testCase.input}
-                <br />
-                Expected Output: {testCase.expectedOutput}
-              </p>
+              <div
+                key={testCase.input}
+                className="flex items-center gap-2 p-2 bg-gray-50 rounded-md"
+              >
+                <Play className="w-3 h-3 text-blue-500 flex-shrink-0" />
+                <span className="text-gray-700 font-medium">
+                  {testCase.input}
+                </span>
+                <ArrowRight className="w-3 h-3 text-gray-400 flex-shrink-0" />
+                <span className="text-green-600 font-medium">
+                  {testCase.expectedOutput}
+                </span>
+              </div>
             ))}
           </div>
         </div>
@@ -39,7 +49,7 @@ export default function EditorSidebar({
         <EditorConsole messages={consoleOutput} />
       </div>
       <Button className="w-full flex-shrink-0" onClick={onSubmit}>
-        Submit
+        Submit and grade
       </Button>
     </div>
   );
