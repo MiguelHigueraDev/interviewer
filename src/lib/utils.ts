@@ -31,3 +31,7 @@ export const getDurationLabel = (value: Duration) => {
       return "20 minutes";
   }
 };
+
+export const isApiKeyValid = (apiKey: string) => {
+  return apiKey.startsWith("AIza");
+};

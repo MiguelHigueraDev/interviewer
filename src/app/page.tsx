@@ -1,5 +1,5 @@
 import { DifficultySettings } from "@/components/home/difficulty-settings";
-import { Settings } from "@/components/home/settings";
+import { Settings } from "@/components/home/settings-modal";
 import { StartInterviewButton } from "@/components/home/start-interview-button";
 import { QuestionRedirector } from "@/components/live-coding-interview/question-redirector";
 

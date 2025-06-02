@@ -1,4 +1,4 @@
-import { Settings } from "@/components/home/settings";
+import { Settings } from "@/components/home/settings-modal";
 import Editor from "@/components/live-coding-interview/editor";
 import { NoQuestionRedirector } from "@/components/live-coding-interview/no-question-redirector";
 

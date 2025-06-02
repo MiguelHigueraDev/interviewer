@@ -1,40 +1,27 @@
+import { generateObject } from "ai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import useApiKeyStore from "@/stores/api-key";
+import { useInterviewStore } from "@/stores/interview";
+import { getDifficultyLabel, getDurationLabel } from "./utils";
+import { LiveCodingInterview, liveCodingInterviewSchema } from "./types";
 
-/*export const generateMultipleChoiceQuestions = async () => {
-  const {
-    difficulty,
-    selectedTechnology,
-    setQuestions,
-    setIsGeneratingQuestions,
-  } = useInterviewStore.getState();
-  setIsGeneratingQuestions(true);
-  try {
-    setIsGeneratingQuestions(true);
+export const generateLiveCodingInterview =
+  async (): Promise<LiveCodingInterview> => {
+    const { difficulty, duration } = useInterviewStore.getState();
+
     const google = getGoogleGenAIClient();
     const response = await generateObject({
       model: google("gemini-2.0-flash"),
-      system: `You are a helpful assistant that generates interview questions for a given technology and difficulty level. 
-        Each question should have a 'text' field and a 'choices' array of 4 objects, 
-        each with 'text' and 'isCorrect' (boolean, only one isCorrect should be true per question, 
-        the rest should be false (non correct choices)).
-        Try to make the questions as diverse as possible.
-        Don't always make the correct answer the first choice.`,
-      prompt: `Generate 10 ${getDifficultyName(
+      prompt: `Generate a ${getDifficultyLabel(
         difficulty
-      )} interview questions about the ${selectedTechnology.name}`,
-      schema: questionsSchema,
+      )} problem with test cases for a ${getDurationLabel(
+        duration
+      )} live coding interview. Include the initial code for both TypeScript and JavaScript
+      , which also logs the test cases to the console.`,
+      schema: liveCodingInterviewSchema,
     });
-    const questions = response.object.questions;
-    setQuestions(questions);
-    console.log(questions);
-  } catch (error) {
-    console.error(error);
-    return null;
-  } finally {
-    setIsGeneratingQuestions(false);
-  }
-};*/
+    return response.object;
+  };
 
 const getGoogleGenAIClient = () => {
   const { apiKey } = useApiKeyStore.getState();
