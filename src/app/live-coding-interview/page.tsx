@@ -1,4 +1,3 @@
-import { Settings } from "@/components/home/settings-modal";
 import Editor from "@/components/live-coding-interview/editor";
 import { NoQuestionRedirector } from "@/components/live-coding-interview/no-question-redirector";
 
@@ -13,9 +12,6 @@ export default function LiveCodingInterviewPage() {
       </div>
       <div className="flex-1 min-h-0 px-4 pb-4">
         <Editor />
-      </div>
-      <div className="fixed bottom-4 right-4">
-        <Settings />
       </div>
       <NoQuestionRedirector />
     </div>
