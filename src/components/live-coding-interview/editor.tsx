@@ -131,7 +131,7 @@ export default function Editor({ onSubmit }: EditorProps) {
   }, [typeScriptCode]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 w-full h-full max-w-7xl mx-auto">
+    <div className="flex flex-col md:flex-row gap-4 w-full h-full">
       <div className="flex flex-col w-full md:w-3/5 h-full border border-gray-200 rounded-lg p-2">
         <MonacoEditor
           width="100%"
