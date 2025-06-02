@@ -23,7 +23,8 @@ import {
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useSettingsModalStore } from "@/stores/settings-modal";
 
 const settingsFormSchema = z.object({
   apiKey: z.string().min(1, { message: "API Key is required" }),
@@ -32,7 +33,7 @@ const settingsFormSchema = z.object({
 export function Settings() {
   useSyncApiKeyFromLocalStorage();
   const { apiKey, setApiKey } = useApiKeyStore();
-  const [open, setOpen] = useState(false);
+  const { isOpen, setIsOpen } = useSettingsModalStore();
 
   const form = useForm<z.infer<typeof settingsFormSchema>>({
     resolver: zodResolver(settingsFormSchema),
@@ -48,11 +49,11 @@ export function Settings() {
 
   function onSubmit(values: z.infer<typeof settingsFormSchema>) {
     setApiKey(values.apiKey);
-    setOpen(false);
+    setIsOpen(false);
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button className="cursor-pointer" variant="secondary" size="icon">
           <SettingsIcon />
@@ -62,7 +63,7 @@ export function Settings() {
         <DialogHeader>
           <DialogTitle>Settings</DialogTitle>
           <DialogDescription>
-            Enter your Gemini API key below. You can find your API key in{" "}
+            Enter your Gemini API key below. You can get your API key in{" "}
             <a
               href="https://aistudio.google.com/"
               target="_blank"
@@ -71,7 +72,10 @@ export function Settings() {
             >
               Google AI Studio
             </a>
-            .
+            .{" "}
+            <strong>
+              Your API key is only used locally and never sent to our servers.
+            </strong>
           </DialogDescription>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

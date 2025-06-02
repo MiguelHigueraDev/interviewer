@@ -4,15 +4,15 @@ import { useInterviewStore } from "@/stores/interview";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
-export function HomeRedirector() {
+export function QuestionRedirector() {
   const router = useRouter();
-  const questions = useInterviewStore((state) => state.questions);
+  const question = useInterviewStore((state) => state.question);
 
   useEffect(() => {
-    if (questions.length === 0) {
-      router.push("/");
+    if (question) {
+      router.push("/live-coding-interview");
     }
-  }, [questions, router]);
+  }, [question, router]);
 
   return null;
 }
