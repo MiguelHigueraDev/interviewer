@@ -12,7 +12,7 @@ export default function Home() {
           Simulate a live coding interview with AI
         </h2>
         <p className="text-sm text-muted-foreground">
-          You can write code in TypeScript or JavaScript
+          Write your code in TypeScript
         </p>
       </div>
       <div className="w-full max-w-2xl mx-auto">
