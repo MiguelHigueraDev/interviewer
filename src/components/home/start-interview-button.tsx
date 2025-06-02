@@ -7,6 +7,7 @@ import { useSettingsModalStore } from "@/stores/settings-modal";
 import { generateLiveCodingInterview } from "@/lib/ai";
 import { useInterviewStore } from "@/stores/interview";
 import { Loader2Icon } from "lucide-react";
+import { toast } from "sonner";
 
 export function StartInterviewButton() {
   const { apiKey } = useApiKeyStore();
@@ -19,6 +20,9 @@ export function StartInterviewButton() {
       await generateLiveCodingInterview();
     } catch (error) {
       console.error(error);
+      toast.error("Failed to generate interview", {
+        description: "Please try again later",
+      });
     } finally {
       setIsLoading(false);
     }
