@@ -15,7 +15,7 @@ export function BackButton() {
   };
 
   return (
-    <Button className="mt-4" onClick={handleBack}>
+    <Button className="mt-4 cursor-pointer" onClick={handleBack}>
       Go back
     </Button>
   );

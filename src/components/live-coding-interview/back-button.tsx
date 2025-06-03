@@ -12,5 +12,9 @@ export function BackButton() {
     router.replace("/");
   };
 
-  return <Button onClick={handleBack}>Go back</Button>;
+  return (
+    <Button className="cursor-pointer" onClick={handleBack}>
+      Go back
+    </Button>
+  );
 }

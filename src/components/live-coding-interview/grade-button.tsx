@@ -27,7 +27,7 @@ export function GradeButton() {
 
   return (
     <Button
-      className="w-full flex-shrink-0"
+      className="w-full flex-shrink-0 cursor-pointer"
       onClick={handleSubmit}
       disabled={isLoading || !isInterviewActive}
     >
