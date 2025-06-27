@@ -11,6 +11,7 @@ import {
 } from "./types";
 
 const TEST_CASES_COUNT = 6;
+const AI_MODEL = "gemini-2.5-flash";
 
 export const generateLiveCodingInterview =
   async (): Promise<LiveCodingInterview> => {
@@ -18,7 +19,7 @@ export const generateLiveCodingInterview =
 
     const google = getGoogleGenAIClient();
     const response = await generateObject({
-      model: google("gemini-2.0-flash"),
+      model: google(AI_MODEL),
       prompt: `Generate a ${getDifficultyLabel(
         difficulty
       )} problem with ${TEST_CASES_COUNT} test cases for a ${getDurationLabel(
@@ -40,7 +41,7 @@ export const gradeSolution = async (
 ) => {
   const google = getGoogleGenAIClient();
   const response = await generateObject({
-    model: google("gemini-2.0-flash"),
+    model: google(AI_MODEL),
     system: `Grade the following solution.
     Score it from 0 to 100 based on:
     - Correctness
